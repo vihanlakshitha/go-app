@@ -8,3 +8,6 @@ steps:
   - name: 'gcr.io/google-cloud-sdk/slim'
     entrypoint: 'gcloud'
     args: ['run', 'deploy', 'go-app-service', '--image=us-central1-docker.pkg.dev/sincere-passage-461914-a3/my-repo/go-app:latest', '--region=us-central1', '--platform=managed', '--allow-unauthenticated']
+
+options:
+  logging: CLOUD_LOGGING_ONLY
