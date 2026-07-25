@@ -5,7 +5,14 @@ steps:
   - name: 'gcr.io/cloud-builders/docker'
     args: ['push', 'us-central1-docker.pkg.dev/sincere-passage-461914-a3/my-repo/go-app:latest']
 
-  - name: 'gcr.io/google-cloud-sdk/slim'
+steps:
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['build', '-t', 'us-central1-docker.pkg.dev/sincere-passage-461914-a3/my-repo/go-app:latest', '.']
+
+  - name: 'gcr.io/cloud-builders/docker'
+    args: ['push', 'us-central1-docker.pkg.dev/sincere-passage-461914-a3/my-repo/go-app:latest']
+
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk:slim'
     entrypoint: 'gcloud'
     args: ['run', 'deploy', 'go-app-service', '--image=us-central1-docker.pkg.dev/sincere-passage-461914-a3/my-repo/go-app:latest', '--region=us-central1', '--platform=managed', '--allow-unauthenticated']
 
